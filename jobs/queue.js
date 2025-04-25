@@ -1,8 +1,12 @@
 const { Queue } = require('bullmq');
-const redis = require('../config/redis');
+const Redis = require('ioredis');
+require('dotenv').config();
 
-const queue = new Queue('messages', {
-  connection: redis,
-});
+const connection = new Redis(process.env.REDIS_URL);
 
-module.exports = queue;
+function createQueue(phoneNumber) {
+  const queueName = `messages:${phoneNumber}`;
+  return new Queue(queueName, { connection });
+}
+
+module.exports = { createQueue };
