@@ -9,9 +9,8 @@ async function handleMessage(req, res) {
     const message = value?.messages?.[0];
 
     if (!message || !message?.from) {
-      return res.sendStatus(201).json({ status: 'ok' });
+      return;
     }
-    res.sendStatus(200).json({ status: 'ok' });
 
 
     const userPhoneNumber = message.from;
