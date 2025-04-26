@@ -7,13 +7,14 @@ async function handleMessage(req, res) {
     const changes = entry?.changes?.[0];
     const value = changes?.value;
     const message = value?.messages?.[0];
-    const userPhoneNumber = message.from;
 
-    if (!message || !message.from) {
+    if (!message || !message?.from) {
       return res.sendStatus(201);
     }
     res.sendStatus(200);
 
+
+    const userPhoneNumber = message.from;
     const metaPhoneNumberId = value.metadata.phone_number_id;
 
     console.log('Processing received message:', {
