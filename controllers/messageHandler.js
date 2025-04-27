@@ -13,7 +13,9 @@ async function handleMessage(req, res) {
     }
 
 
-    const userPhoneNumber = message.from;
+    //const userPhoneNumber = message.from;
+    const userPhoneNumber = "test1" // MOCK TEST
+
     const metaPhoneNumberId = value.metadata.phone_number_id;
 
     console.log('Processing received message:', {
