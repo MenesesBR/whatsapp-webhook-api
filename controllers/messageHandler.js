@@ -57,7 +57,7 @@ async function handleMessage(req, res) {
         blipBotId: clientBotId,
         metaPhoneNumberId,
         userPhoneNumber,
-        userId: `${clientBotUserData.phoneNumber}.${clientBotId}@${clientBotData.userDomain}`,
+        userId: `${clientBotUserData.phoneNumber}.${clientBotId}`,
         userPassword: clientBotUserData.password,
         metaAuthToken: clientBotData.metaAuthToken,
         userDomain: clientBotData.userDomain,
