@@ -1,5 +1,6 @@
 const { createQueue } = require('../jobs/queue');
 const mongodb = require('../services/mongoDbService');
+require('dotenv').config();
 
 async function handleMessage(req, res) {
   try {
@@ -14,7 +15,7 @@ async function handleMessage(req, res) {
 
 
     //const userPhoneNumber = message.from;
-    const userPhoneNumber = "test1" // MOCK TEST
+    const userPhoneNumber =   process.env.MOCK_TEST_USER || message.from // MOCK TEST
 
     const metaPhoneNumberId = value.metadata.phone_number_id;
 
@@ -42,7 +43,7 @@ async function handleMessage(req, res) {
 
     if (!clientBotUserData) {
       console.log('No user data found in database:', userPhoneNumber);
-      const password = Buffer.from(Math.random().toString()).toString('base64').substring(0, 10);
+      const password = Buffer.from(Math.random().toString()).toString('base64').slice(0, 8);
       await mongodb.createUser(userPhoneNumber, password, clientBotId);
 
       // Aguardar a atualização dos dados do usuário
