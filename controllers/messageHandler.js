@@ -23,7 +23,8 @@ async function handleMessage(req, res) {
       metaPhoneNumberId: metaPhoneNumberId,
       userPhoneNumber: userPhoneNumber,
       messageType: message.type,
-      timestamp: message.timestamp
+      timestamp: message.timestamp,
+      fullBody: req.body
     });
 
     // Aguardar a obtenção dos dados do clienteF
